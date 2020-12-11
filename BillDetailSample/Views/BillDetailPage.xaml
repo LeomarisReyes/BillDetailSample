@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             BackgroundColor="#efefef"
+             x:Class="BillDetailSample.Views.BillDetailPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <!-- Main Structure-->
+            <Grid RowSpacing="0" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+            <!-- Price block-->
+                <!-- Frame with price information-->
+            <Frame Grid.Row="0" Margin="30,90,30,0" HeightRequest="100" >
+                <Grid RowDefinitions="Auto,Auto,Auto" HorizontalOptions="Center">
+                    <Label Grid.Row="0" Text="$181.94" Style="{StaticResource MainAmount}" Margin="0,20,0,0"/>
+                    <Label Grid.Row="1" Text="September 24, 7:32pm" HorizontalOptions="Center" Style="{StaticResource SecundaryText}"/>
+                    <Line  Grid.Row="2" Style="{StaticResource DivisionLine}" />
+                </Grid> 
+            </Frame>
+                <!-- Main image-->
+            <Image Grid.Row="0" Source="Nike" HorizontalOptions="Center" TranslationY="-35" HeightRequest="90" WidthRequest="90"/>
+                 <!-- Indicator Bar-->
+            <PanCake:PancakeView Grid.Row="0" CornerRadius="20,0,0,30" TranslationY="90" TranslationX="30" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="100" HeightRequest="35">
+                <Grid RowDefinitions="*" BackgroundColor="#1277e3" Padding="15,5">
+                    <Label Grid.Row="0" Text="OFFLINE" FontAttributes="Bold" TextColor="White" FontSize="15"/>
+                </Grid>                   
+            </PanCake:PancakeView>
+            <!-- 2. Details & Total-->
+            <Frame Grid.Row="1" Margin="30,-15,30,0" HeightRequest="292">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*">
+                    <!-- Product list-->
+                    <CollectionView Grid.Row="1" Grid.Column="0" Margin="0,-15,0,12" Grid.ColumnSpan="2" VerticalOptions="StartAndExpand"
+                                     VerticalScrollBarVisibility="Never"
+                                     HeightRequest="145"
+                                     ItemsSource="{Binding items}">
+                         <CollectionView.ItemTemplate>
+                               <DataTemplate>   
+                                     <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                                         <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HeightRequest="60" WidthRequest="60" Source="{Binding Picture}" Margin="0,5,0,0"/> 
+                                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Margin="0,5,0,0" FontAttributes="Bold" FontSize="16" TextColor="Silver"/>
+                                         <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" FontAttributes="Bold" FontSize="16" VerticalOptions="End" Margin="0,0,0,5"/>
+                                         <Label Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Text="{Binding Price}" VerticalOptions="Center" FontSize="18" FontAttributes="Bold"/>
+                                         <Line  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" X1="260" StrokeThickness="0.5" Stroke="Silver"/>
+                                      </Grid>
+                                    </DataTemplate>
+                         </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <!-- Amount of products -->
+                    <Label Grid.Row="2" Grid.Column="0" Text="Subtotal" FontSize="16" TextColor="#4f4f4f" FontAttributes="Bold" Margin="0,0,0,10"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Discount" FontSize="16" TextColor="#4f4f4f" FontAttributes="Bold"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="2%"       BackgroundColor="Silver" Padding="2" FontSize="10" VerticalTextAlignment="Center" HorizontalOptions="Center" TranslationX="10" TranslationY="-2"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="$185.65"  FontSize="18" FontAttributes="Bold" Margin="0,0,0,10" HorizontalOptions="End"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="-$3.71"   FontSize="18" FontAttributes="Bold" TextColor="#2880e5" HorizontalOptions="End"/>
+
+                    <Line  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,15"
+                           Style="{StaticResource DivisionLine}" />
+
+                    <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  Text="Nike Fligship Store" FontAttributes="Bold" FontSize="16" HorizontalOptions="Center"/>
+                    <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Text="Maritime Square, Tierra Verde" HorizontalOptions="Center" Style="{StaticResource SecundaryText}"/>
+
+                </Grid>
+            </Frame> 
+            <!-- Rounded borders-->
+            <Ellipse Grid.Row="1" HorizontalOptions="Start"  TranslationY="-322" TranslationX="20"  Fill="#efefef" VerticalOptions="End" HeightRequest="26" WidthRequest="26" StrokeThickness="0"/>
+            <Ellipse Grid.Row="1" HorizontalOptions="End" TranslationY="-322" TranslationX="-20" Fill="#efefef" VerticalOptions="End" HeightRequest="26" WidthRequest="26" StrokeThickness="0"/>
+
+            <!-- Timeline-->
+            <Frame Grid.Row="2" Margin="30,20,30,0" HeightRequest="113">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*">
+                    <Label Grid.Row="0" Grid.Column="0" Text="TIMELINE" TextColor="Silver" FontSize="14" CharacterSpacing="2"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Sept 26" Padding="0,0,15,0" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="Confirm received commodity, $181.94 is included in this month bills." FontSize="13" LineBreakMode="WordWrap"/>
+                    <Line Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Margin="0,5,0,0"
+                               X1="260"
+                               StrokeThickness="0.5"
+                               Stroke="Silver"/>
+                    <Image Grid.Row="3" Grid.Column="0" HorizontalOptions="End" Source="LogoPaypal" TranslationY="3"/>
+                    <Label Grid.Row="3" Grid.Column="1" Padding="0,5,0,0" HorizontalOptions="Start" Text="lyh4852@icloud.com" HorizontalTextAlignment="Center" FontSize="15" FontAttributes="Bold"/>
+                </Grid>
+            </Frame>
+           <!-- Paymnet buttons-->
+           <Label Grid.Row="3" HorizontalTextAlignment="Center" Margin="20,10,20,0" >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Have problem about this bill?" FontSize="15" FontAttributes="Bold" TextColor="Silver"/>
+                        <Span Text=" Customer service" TextColor="#4e4e4e" FontAttributes="Bold" FontSize="15"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label> 
+    
+             <Grid Grid.Row="4" ColumnDefinitions="*,*" Padding="15">
+                <Button Grid.Column="0"  ImageSource="Arrow" Text="Pay Later" TextColor="Black" FontAttributes="Bold" BackgroundColor="#e4e4e4" CornerRadius="10" HeightRequest="50" Margin="10,5,10,20"/>
+                <Button Grid.Column="1" Text="Pay now" TextColor="White" FontAttributes="Bold" BackgroundColor="Black" CornerRadius="10" Margin="5,5,10,20" HeightRequest="50"/>
+            </Grid> 
+                
+          </Grid>
+       </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

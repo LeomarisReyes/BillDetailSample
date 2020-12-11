@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="BillDetailSample.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Global styles-->
+           <Style TargetType="Frame"> 
+               <Setter Property="CornerRadius"      Value="20"/>
+               <Setter Property="HasShadow"         Value="False"/>
+               <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+           </Style>
+            <!-- -->
+           <Style x:Key="MainAmount" TargetType="Label"> 
+               <Setter Property="FontAttributes"    Value="Bold"/>
+               <Setter Property="FontSize"          Value="22"/>
+               <Setter Property="HorizontalOptions" Value="Center"/>
+           </Style>
+           <Style x:Key="SecundaryText" TargetType="Label"> 
+               <Setter Property="TextColor"         Value="Silver"/>
+               <Setter Property="FontSize"          Value="16"/> 
+           </Style>
+           <Style x:Key="DivisionLine" TargetType="Line"> 
+               <Setter Property="TranslationY"      Value="{d:OnPlatform Android='15', iOS='20'}"/>
+               <Setter Property="VerticalOptions"   Value="Center"/>
+               <Setter Property="HorizontalOptions" Value="Center"/>
+               <Setter Property="StrokeDashArray"   Value="1,6"/>
+               <Setter Property="X2"                Value="320"/>
+               <Setter Property="StrokeLineCap"     Value="Square"/>
+               <Setter Property="Stroke"            Value="Silver"/>
+               <Setter Property="StrokeThickness"   Value="2"/>
+           </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
